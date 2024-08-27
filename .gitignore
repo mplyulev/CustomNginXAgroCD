@@ -1,0 +1,19 @@
+# Helm
+/src/main/helm/charts
+/src/main/helm/manifests
+/src/main/helm/requirements.lock
+
+# Local development
+*.env
+*.dev
+.DS_Store
+.idea
+.classpath
+.project
+.settings
+.vscode
+*.iml
+
+# Workspace
+publish
+target

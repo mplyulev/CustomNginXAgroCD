@@ -1,0 +1,32 @@
+apiVersion: technology-service/v1alpha1
+kind: Component
+metadata:
+  name: nebula-lobby
+  project: NBL
+  annotations:
+    sonarqube.org/project-key: internal.poker:nebula-lobby:master
+spec:
+  systems:
+    - name: poker-clients
+    - name: poker-cash
+    - name: poker-zone
+    - name: poker-single-table-tournaments
+    - name: poker-multi-table-tournaments
+    - name: poker-jackpot-sng
+  department: poker
+technologies:
+  - name: Nginx
+    version: 1.27.1
+  - name: Helm
+    version: 3.13.1
+technicalDebt:
+  principlesAlignment:
+    simplicity: 'GREEN'
+    disposability: 'RED'
+    consistency: 'GREEN'
+    resilience: 'GREEN'
+    observability: 'GREEN'
+    efficiency: 'GREEN'
+    security: 'GREEN'
+  testCoverage:
+    test-pyramid-alignment: 'GREEN'

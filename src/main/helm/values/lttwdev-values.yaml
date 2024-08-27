@@ -1,0 +1,6 @@
+global:
+  namespace: poker-static-assets-lttwdev
+
+ingress:
+  hosts:
+    - poker-static-assets.lttwdev.internal

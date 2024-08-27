@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: nebula-lobby
+  description: Deployment of static assets to serve Nebula Lobby from Nebula Monorepo.
+  annotations:
+    sonarqube.org/project-key: internal.poker:nebula-lobby:master
+    technology-service/component-key: NBL:nebula-lobby
+spec:
+  type: service
+  owner: poker
+  lifecycle: production
+  system: poker-clients

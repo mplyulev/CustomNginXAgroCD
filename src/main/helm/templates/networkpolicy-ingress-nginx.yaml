@@ -1,0 +1,32 @@
+{{- $labels := include "nebula.labels" . -}}
+{{- range .Values.networkPolicies }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "nebula.name" $ }}
+  namespace: {{ include "nebula.namespace" $ }}
+  labels:
+    {{- $labels | nindent 4 }}
+    {{- if .extraLabels }}
+      {{- tpl (.extraLabels | toYaml) $ | nindent 4 }}
+    {{- end }}
+spec:
+  podSelector:
+    {{- tpl (.podSelector | toYaml) $ | nindent 4 }}
+  policyTypes:
+  {{- if .ingress }}
+    - Ingress
+  {{- end }}
+  {{- if .egress }}
+    - Egress
+  {{- end }}
+  {{- if .ingress }}
+  ingress:
+    {{- tpl (.ingress | toYaml) $ | nindent 4 }}
+  {{- end }}
+  {{- if .egress }}
+  egress:
+    {{- tpl (.egress | toYaml) $ | nindent 4 }}
+  {{- end }}
+---
+{{- end }}

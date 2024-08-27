@@ -1,0 +1,3 @@
+[submodule "bamboo-specs/bamboo-specs-common"]
+	path = bamboo-specs/bamboo-specs-common
+	url = ../../devops/bamboo-specs-common.git

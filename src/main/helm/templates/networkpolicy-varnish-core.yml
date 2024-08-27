@@ -1,0 +1,16 @@
+{{- $name := include "beatrix-site-base-chart.name" . -}}
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ $name }}-varnish-core
+  namespace: {{ .Values.global.namespace }}
+spec:
+  podSelector:
+    matchLabels:
+      project: {{ $name }}
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              project: beatrix-varnish-core
