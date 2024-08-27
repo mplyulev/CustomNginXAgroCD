@@ -6,7 +6,7 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  name: my-app-service
+  name: test-app-service
   type: LoadBalancer
   port: 80
   targetPort: 80
