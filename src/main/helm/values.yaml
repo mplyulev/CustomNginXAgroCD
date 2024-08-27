@@ -1,4 +1,6 @@
 replicaCount: 2
+namespace: test  # Change this to the desired namespace
+replicaCount: 1
 
 image:
   repository: https://hub.docker.com/r/petyrveliki/petar-custom-nginx

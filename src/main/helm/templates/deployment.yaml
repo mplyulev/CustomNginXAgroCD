@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "nginx-chart.fullname" . }}
+  namespace: test  # Set namespace here
   labels:
     {{- include "nginx-chart.labels" . | nindent 4 }}
 spec:
