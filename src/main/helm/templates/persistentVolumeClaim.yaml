@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   labels:
     app.kubernetes.io/instance: v1
-  name: v1-my-chart-pvc
+  name: pvc
   namespace: poker-static-assets
 spec:
   accessModes:
