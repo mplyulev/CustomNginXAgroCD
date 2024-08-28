@@ -6,7 +6,7 @@ spec:
   capacity:
     storage: {{ .Values.persistence.size }}
   accessModes:
-    - {{ .Values.persistence.accessModes[0] }}
+    - ReadWriteOnce
   storageClassName: {{ .Values.persistence.storageClass }}
   hostPath:
     path: /mnt/data
