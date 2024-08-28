@@ -1,19 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "my-chart.fullname" . }}
+  name: argocd-myapp-ingress
   namespace: poker-static-assets
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: {{ .Values.ingress.host }}
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ include "my-chart.fullname" . }}
-                port:
-                  number: 80
+  - host: nginx-from-argocd.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: argocd-myapp-internal-service
+            port:
+              number: 80
