@@ -1,151 +1,20 @@
-replicaCount: 2
-namespace: poker-static-assets  # Change this to the desired namespace
 replicaCount: 1
 
 image:
   repository: https://hub.docker.com/r/petyrveliki/petar-custom-nginx
-  tag: <tag>
-  pullPolicy: IfNotPresent
+  tag: latest
 
 service:
-  name: test-app-service
-  type: LoadBalancer
+  name: my-service
+  type: ClusterIP
   port: 80
-  targetPort: 80
 
-ingress:
-  enabled: false
-  name: ""
-  # If you have ingress enabled, update with relevant values
-  # path: /
-  # hosts:
-  #   - host: chart-example.local
-  #     paths:
-  #       - /
-  # tls: []
-  #   - secretName: chart-example-tls
-  #     hosts:
-  #       - chart-example.local
-
-resources: {}
-# Uncomment to enable custom resource requests and limits
-# limits:
-#   cpu: 100m
-#   memory: 128Mi
-# requests:
-#   cpu: 100m
-#   memory: 128Mi
-
-livenessProbe:
-  httpGet:
-    path: /healthz
-    port: 80
-  initialDelaySeconds: 30
-  periodSeconds: 10
-
-readinessProbe:
-  httpGet:
-    path: /readiness
-    port: 80
-  initialDelaySeconds: 30
-  periodSeconds: 10
-
-# Configure persistence if needed
 persistence:
-  enabled: false
-  storageClass: "default"
+  enabled: true
+  storageClass: "manual"
   accessModes:
     - ReadWriteOnce
-  size: 8Gi
+  size: 10Gi
 
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
-
-
-
-
-# global:
-#   labels:
-#     channel: poker
-
-# base:
-#   nameOverride: ${project.artifactId}
-#   image:
-#     repository: "${docker.deploy.tag}/${project.artifactId}"  # where will the image be deployed
-#     tag: "${project.version}"
-
-#   configService:
-#     required: false
-
-#   nginx:
-#     enabled: false # Change to true and configure when we have our own base chart 
-
-#   resources:
-#     limits:
-#       cpu: "2"
-#       memory: 1G
-#     requests:
-#       cpu: "100m"
-#       memory: 1G
-
-#   persistence:
-#     enabled: true
-#     storageClass: "manual"
-#     accessModes:
-#       - ReadWriteOnce
-#     size: 10Gi
+resources: {}
  
-#   custom:
-#     groupId: ${project.groupId}
-#     lifecycle:
-#       preStop:
-#         exec:
-#           command:
-#             - "/usr/sbin/nginx"
-#             - "-s"
-#             - quit
-
-#   livenessProbe:
-#     type: tcpSocket
-#     initialDelaySeconds: 120
-#     timeoutSeconds: 2
-
-#   readinessProbe:
-#     path: /status
-#     initialDelaySeconds: 30
-#     periodSeconds: 15
-
-#   nginxService:
-#     fluentdSidecar:
-#       remoteSysLogHost: "${docker.fluentd.remote.syslog.host}"
-
-# custom:
-#   appLabelName: poker-static-assets-dcp
-
-# image:
-#   tag: "${project.version}"
-
-# networkPolicies:
-#   - name: poker-static-assets-dcp-ingress-nginx
-#     podSelector:
-#       matchLabels:
-#         app: poker-static-assets-dcp
-#     ingress:
-#       - from:
-#           - namespaceSelector:
-#               matchLabels:
-#                 name: ingress-nginx
-#             podSelector:
-#               matchLabels:
-#                 app.kubernetes.io/name: ingress-nginx
-
-# ingress:
-#   enabled: true
-#   extraLabels: {}
-#   extraAnnotations: {}
-#   path: /
-#   port: "80",
-#   # host: "example.com" # Update with your actual domain name
