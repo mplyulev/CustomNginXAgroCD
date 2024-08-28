@@ -1,28 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "my-chart.fullname" . }}
-  labels:
-    app: {{ include "my-chart.name" . }}
+  name: myapp
 spec:
-  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "my-chart.name" . }}
+      app: myapp
+  replicas: 2
   template:
     metadata:
       labels:
-        app: {{ include "my-chart.name" . }}
+        app: myapp
     spec:
       containers:
-        - name: my-container
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          ports:
-            - containerPort: 80
-          volumeMounts:
-            - name: my-storage
-              mountPath: /usr/share/nginx/html
+      - name: myapp
+        image: petyrveliki/petar-custom-nginx
+        ports:
+        - containerPort: 80
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: my-pv
+          mountPath: /usr/share/nginx/html
+      securityContext: {}
       volumes:
-        - name: my-storage
-          persistentVolumeClaim:
-            claimName: {{ include "my-chart.fullname" . }}-pvc
+      - name: my-pv
+        persistentVolumeClaim:
+          claimName: pvc-example
