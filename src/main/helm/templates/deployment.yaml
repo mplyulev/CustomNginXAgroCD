@@ -9,6 +9,7 @@ spec:
   replicas: 2
   template:
     metadata:
+      namespace: poker-static-assets
       labels:
         app: myapp
     spec:
