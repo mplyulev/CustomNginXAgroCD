@@ -1,30 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  labels:
+    app.kubernetes.io/instance: v1
   name: myapp
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: myapp
-  replicas: 2
   template:
     metadata:
-      namespace: poker-static-assets
       labels:
         app: myapp
+      namespace: poker-static-assets
     spec:
       containers:
-      - name: myapp
-        image: petyrveliki/petar-custom-nginx
-        ports:
-        - containerPort: 80
-        securityContext:
-          privileged: true
-        volumeMounts:
-        - name: my-pv
-          mountPath: /usr/share/nginx/html
+        - image: petyrveliki/petar-custom-nginx
+          name: myapp
+          ports:
+            - containerPort: 80
+          securityContext:
+            privileged: true
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html
+              name: my-pv
       securityContext: {}
       volumes:
-      - name: my-pv
-        persistentVolumeClaim:
-          claimName: pvc-example
+        - name: my-pv
+          persistentVolumeClaim:
+            claimName: pvc-example
