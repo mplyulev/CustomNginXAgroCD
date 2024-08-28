@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: v1-my-chart-pv
+  name: pv
 spec:
   capacity:
-    storage: {{ .Values.persistence.size }}
+    storage: 10Gi
   accessModes:
     - ReadOnlyMany
-  storageClassName: {{ .Values.persistence.storageClass }}
+  storageClassName: manual
   persistentVolumeReclaimPolicy: Retain
   hostPath:
     path: /mnt/data
