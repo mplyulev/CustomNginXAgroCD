@@ -1,5 +1,4 @@
-apiVersion: v1
-appVersion: v1
-description: Static assets for the PokerHTML5 project
-name: poker-static-assets
+apiVersion: v2
+name: my-chart
+description: A simple Helm chart for deploying a Docker image with PV and PVC
 version: 0.1.0

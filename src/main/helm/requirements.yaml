@@ -1,5 +1,0 @@
-# dependencies:
-#   - name: beatrix-site-base-chart
-#     version: 1.41.0
-#     repository: "@helm-int"
-#     alias: base
