@@ -3,8 +3,8 @@ kind: PersistentVolume
 metadata:
   labels:
     app.kubernetes.io/instance: v1
-    name: pv
-   namespace: poker-static-assets
+  name: pv
+  namespace: poker-static-assets
 spec:
   accessModes:
     - ReadOnlyMany

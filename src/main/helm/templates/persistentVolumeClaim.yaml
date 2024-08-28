@@ -1,14 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  labels:
-    app.kubernetes.io/instance: v1
-  name: pvc
-  namespace: poker-static-assets
+  name: my-pvc
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
-  storageClassName: manual
+  volumeName: pv  # Reference your manually created PV here
