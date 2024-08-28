@@ -27,4 +27,4 @@ spec:
       volumes:
       - name: frontend-storage
         persistentVolumeClaim:
-          claimName: {{ include "poker-static-assets-dcpl.fullname" . }}-pvc
+          claimName: nginx-pvc

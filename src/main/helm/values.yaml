@@ -1,5 +1,5 @@
 replicaCount: 2
-namespace: test  # Change this to the desired namespace
+namespace: poker-static-assets  # Change this to the desired namespace
 replicaCount: 1
 
 image:

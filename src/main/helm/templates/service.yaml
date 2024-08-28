@@ -1,13 +1,33 @@
+piVersion: v1
+kind: Service
+metadata:
+  name: poker-static-assets
+  namespace: test
+  annotations:
+    meta.helm.sh/release-name: poker-static-assets-dcpl
+    meta.helm.sh/release-namespace: test
+  labels:
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+  selector:
+    app: poker-static-assets-dcpl
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "poker-static-assets-dcpl.fullname" . }}
-  namespace: test  # Set namespace here
+  name: poker-static-assets-dcpl
+  namespace: test
+  annotations:
+    meta.helm.sh/release-name: poker-static-assets-dcpl
+    meta.helm.sh/release-namespace: test
   labels:
-    {{- include "poker-static-assets-dcpl.labels" . | nindent 4 }}
+    app.kubernetes.io/managed-by: Helm
 spec:
-  type: {{ .Values.service.type }}
+  type: ClusterIP  # Adjust the type based on your requirements
   ports:
-    - port: {{ .Values.service.port }}
+    - port: 80
   selector:
-    app: {{ include "poker-static-assets-dcpl.name" . }}
+    app: poker-static-assets-dcpl
