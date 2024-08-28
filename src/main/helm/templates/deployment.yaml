@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "nginx-chart.fullname" . }}
+  name: {{ include "poker-static-assets-dcpl.fullname" . }}
   namespace: test  # Set namespace here
   labels:
-    {{- include "nginx-chart.labels" . | nindent 4 }}
+    {{- include "poker-static-assets-dcpl.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   progressDeadlineSeconds: 600
   selector:
     matchLabels:
-      app: {{ include "nginx-chart.name" . }}
+      app: {{ include "poker-static-assets-dcpl.name" . }}
   template:
     metadata:
       labels:
-        app: {{ include "nginx-chart.name" . }}
+        app: {{ include "poker-static-assets-dcpl.name" . }}
     spec:
       containers:
       - name: nginx
@@ -27,4 +27,4 @@ spec:
       volumes:
       - name: frontend-storage
         persistentVolumeClaim:
-          claimName: {{ include "nginx-chart.fullname" . }}-pvc
+          claimName: {{ include "poker-static-assets-dcpl.fullname" . }}-pvc

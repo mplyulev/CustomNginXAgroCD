@@ -1,12 +1,12 @@
-{{- define "nginx-chart.fullname" -}}
-{{- .Release.Name | trunc 63 | trimSuffix "-" -}}
+{{- define "poker-static-assets-dcpl.fullname" -}}
+{{- printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
-{{- define "nginx-chart.name" -}}
+{{- define "poker-static-assets-dcpl.name" -}}
 {{- .Chart.Name -}}
 {{- end -}}
 
-{{- define "nginx-chart.labels" -}}
+{{- define "poker-static-assets-dcpl.labels" -}}
 helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 app.kubernetes.io/name: "{{ .Chart.Name }}"
 app.kubernetes.io/instance: "{{ .Release.Name }}"

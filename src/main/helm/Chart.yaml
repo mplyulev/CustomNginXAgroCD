@@ -1,5 +1,5 @@
 apiVersion: 1
-appVersion: 1
+appVersion: v2
 description: Static assets for the PokerHTML5 project
 name: poker-static-assets-dcpl
-version: 0.1.0
+version: 0.2.0
