@@ -1,13 +1,15 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
+  labels:
+    app.kubernetes.io/instance: v1
   name: pv
 spec:
-  capacity:
-    storage: 10Gi
   accessModes:
     - ReadOnlyMany
-  storageClassName: manual
-  persistentVolumeReclaimPolicy: Retain
+  capacity:
+    storage: 10Gi
   hostPath:
     path: /mnt/data
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
