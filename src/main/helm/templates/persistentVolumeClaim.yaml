@@ -3,8 +3,9 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ include "my-chart.fullname" . }}-pvc
 spec:
-  accessModes:
-    - ReadWriteOnce
+   accessModes:
+    - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Retain
   resources:
     requests:
       storage: {{ .Values.persistence.size }}
