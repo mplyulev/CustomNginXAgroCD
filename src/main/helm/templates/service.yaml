@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "nginx-chart.fullname" . }}
+  name: {{ include "poker-static-assets-dcpl.fullname" . }}
   namespace: test  # Set namespace here
   labels:
-    {{- include "nginx-chart.labels" . | nindent 4 }}
+    {{- include "poker-static-assets-dcpl.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
   selector:
-    app: {{ include "nginx-chart.name" . }}
+    app: {{ include "poker-static-assets-dcpl.name" . }}
